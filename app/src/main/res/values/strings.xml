@@ -4,4 +4,6 @@
     <string name="appDescription">This is an app aimed for those with Type 1 Diabetes.</string>
     <string name="enterMaxInstrStr">Enter your max carb count for a meal below:</string>
     <string name="mealsTitleStr">Meals</string>
+    <string name="backButtonDescriptionStr">Back button</string>
+    <string name="homeButtonDescriptionStr">Home button</string>
 </resources>
