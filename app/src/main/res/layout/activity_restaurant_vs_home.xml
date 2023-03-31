@@ -11,8 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topColorBlock"
         android:layout_width="match_parent"
-        android:layout_height="200sp"
-        android:layout_marginTop="4dp"
+        android:layout_height="@dimen/topColorBlockHeight"
+
         android:background="@color/orange"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,17 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/whiteBoxForArrow"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:background="@color/white"
+        <ImageButton
+            android:id="@+id/whiteCircle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#00000000"
+            android:contentDescription="@string/whiteCircleDescriptionStr"
+            android:scaleX="4"
+            android:scaleY="4"
             app:layout_constraintBottom_toBottomOf="@+id/backButton"
             app:layout_constraintEnd_toEndOf="@+id/backButton"
             app:layout_constraintStart_toStartOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="@+id/backButton">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="@+id/backButton"
+            app:srcCompat="@drawable/circle"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/titleStr"
@@ -43,10 +46,11 @@
             android:textColor="#000000"
             android:textSize="48sp"
             android:translationY="70sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
             android:id="@+id/backButton"
@@ -70,6 +74,7 @@
             android:layout_width="107dp"
             android:layout_height="94dp"
             android:background="#00FFFFFF"
+            android:contentDescription="@string/homeButtonDescriptionStr"
             android:foregroundTint="#000000"
             android:scaleX="4"
             android:scaleY="4"
@@ -77,9 +82,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/titleStr"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/home_button"
-            android:contentDescription="@string/homeButtonDescriptionStr"
-            />
+            app:srcCompat="@drawable/home_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
