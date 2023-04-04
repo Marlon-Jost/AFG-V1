@@ -7,4 +7,7 @@
     <string name="backButtonDescriptionStr">Back button</string>
     <string name="homeButtonDescriptionStr">Home button</string>
     <string name="whiteCircleDescriptionStr">White circle</string>
+    <string name="restaurantSearchDescriptionStr">Search for Restaurant</string>
+    <string name="dropDownDescriptionStr">Search for Restaurant drop-down</string>
+    <string name="restaurantSelectionPageTitleStr">Restaurant</string>
 </resources>
