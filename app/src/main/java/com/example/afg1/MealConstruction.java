@@ -14,9 +14,15 @@ public class MealConstruction extends AppCompatActivity {
         setContentView(R.layout.activity_meal_construction);
     }
 
-    //if user presses back button / home button, go back to home page (need another button to save meal if it doesn't save automatically)
+    //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
     public void performHomePage(View v) {
-        Intent intent = new Intent(this, MealConstruction.class);
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+    }
+
+    //if user presses back button, go back to restaurant vs home page
+    public void performRestaurantVsHomePage(View v) {
+        Intent intent = new Intent(this, RestaurantVsHome.class);
         startActivity(intent);
     }
 

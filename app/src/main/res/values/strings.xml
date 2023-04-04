@@ -5,6 +5,7 @@
     <string name="enterMaxInstrStr">Enter your max carb count for a meal below:</string>
     <string name="mealsTitleStr">Meals</string>
     <string name="backButtonDescriptionStr">Back button</string>
+    <string name="addButtonDescriptionStr">Add button</string>
     <string name="homeButtonDescriptionStr">Home button</string>
     <string name="whiteCircleDescriptionStr">White circle</string>
     <string name="restaurantChoice">Restaurant</string>

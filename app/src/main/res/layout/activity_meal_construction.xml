@@ -60,7 +60,7 @@
             android:alpha="1"
             android:background="#00FE904D"
             android:contentDescription="@string/backButtonDescriptionStr"
-            android:onClick="performHomePage"
+            android:onClick="performRestaurantVsHomePage"
             android:scaleX="@dimen/backButtonScale"
             android:scaleY="@dimen/backButtonScale"
             app:layout_constraintBottom_toBottomOf="parent"
