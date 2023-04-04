@@ -28,10 +28,10 @@
             android:contentDescription="@string/whiteCircleDescriptionStr"
             android:scaleX="@dimen/backButtonScale"
             android:scaleY="@dimen/backButtonScale"
-            app:layout_constraintBottom_toBottomOf="@+id/backButton"
-            app:layout_constraintEnd_toEndOf="@+id/backButton"
-            app:layout_constraintStart_toStartOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="@+id/backButton"
+            app:layout_constraintBottom_toBottomOf="@+id/addButton"
+            app:layout_constraintEnd_toEndOf="@+id/addButton"
+            app:layout_constraintStart_toStartOf="@+id/addButton"
+            app:layout_constraintTop_toTopOf="@+id/addButton"
             app:srcCompat="@drawable/circle"
             app:tint="@color/white" />
 
@@ -52,20 +52,21 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/addButton"
             android:layout_width="128dp"
             android:layout_height="117dp"
             android:layout_weight="1"
             android:alpha="1"
             android:background="#00FE904D"
-            android:contentDescription="@string/backButtonDescriptionStr"
+            android:contentDescription="@string/addButtonDescriptionStr"
+            android:onClick="performRestaurantVsHome"
             android:scaleX="@dimen/backButtonScale"
             android:scaleY="@dimen/backButtonScale"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/titleStr"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/left_arrow"
+            app:srcCompat="@drawable/add_button"
             app:tint="@color/customBlue" />
 
         <ImageButton
