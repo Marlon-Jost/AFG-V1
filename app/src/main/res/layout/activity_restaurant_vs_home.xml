@@ -9,44 +9,54 @@
     tools:context=".RestaurantVsHome">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/restaurantButton"
         android:layout_width="500dp"
         android:layout_height="200dp"
         android:layout_marginTop="40dp"
-        android:text="Button"
+        android:backgroundTint="@color/customBlue"
+        android:text="@string/restaurantChoice"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topColorBlock" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/homemadeButton"
         android:layout_width="500dp"
         android:layout_height="200dp"
         android:layout_marginTop="40dp"
-        android:text="Button"
+        android:backgroundTint="@color/customBlue"
+        android:text="@string/homemadeChoice"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurantButton" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/fillMealName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
+        android:hint="@string/nameMeal"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/homemadeButton" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_action_name"
-        tools:layout_editor_absoluteX="485dp"
-        tools:layout_editor_absoluteY="805dp" />
+        android:id="@+id/forwardButton"
+        android:layout_width="128dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FE904D"
+        android:scaleX="@dimen/backButtonScale"
+        android:scaleY="@dimen/backButtonScale"
+        android:tint="@color/customBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fillMealName"
+        app:srcCompat="@drawable/ic_action_name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topColorBlock"
