@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 public class RestaurantChoice extends AppCompatActivity {
 
@@ -12,7 +14,17 @@ public class RestaurantChoice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_choice);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            android.R.layout.simple_dropdown_item_1line, RESTAURANTS);
+        AutoCompleteTextView textView = (AutoCompleteTextView)
+                findViewById(R.id.restaurantDropDown);
+        textView.setAdapter(adapter);
     }
+
+    private static final String[] RESTAURANTS = new String[] {
+            "panera", "starbucks", "taco bell"
+    };
+
 
     //if user presses back button, going back to restaurant vs home meal page
     public void performRestaurantVsHome(View v) {
