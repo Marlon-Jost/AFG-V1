@@ -11,4 +11,7 @@
     <string name="restaurantChoice">Restaurant</string>
     <string name="homemadeChoice">Homemade Meal</string>
     <string name="nameMeal">Meal Name</string>
+    <string name="restaurantSearchDescriptionStr">Search for Restaurant</string>
+    <string name="dropDownDescriptionStr">Search for Restaurant drop-down</string>
+    <string name="restaurantSelectionPageTitleStr">Restaurant</string>
 </resources>
