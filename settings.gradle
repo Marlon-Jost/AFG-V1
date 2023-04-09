@@ -5,12 +5,15 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+
+//I (Marlon) commented out the method below so that the gradle sync would work properly
+
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
 rootProject.name = "AFG 1"
 include ':app'
