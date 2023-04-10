@@ -48,19 +48,22 @@ public class HomePage extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
-        readQuestionDataFB();
+        //Comment out the line below when not pushing to database
+        //readQuestionDataFB();
+
+
         //Get the Global Controller class object
         final Controller aController = (Controller) getApplicationContext();
 
         // Write a message to the database (Can be commented out when database isn't being updated)
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Orders");
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //DatabaseReference myRef = database.getReference("Orders");
 
         for(Order o: aController.getOrders()){
             Log.v("HomePage", "Order: "+o.getOrderName());
 
             //Code to push data to Firebase (Can be commented out when database isn't being updated)
-            myRef.push().setValue(o);
+            //myRef.push().setValue(o);
         }
     }
     private void readQuestionDataFB(){
