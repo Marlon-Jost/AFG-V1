@@ -10,15 +10,14 @@ import android.widget.AutoCompleteTextView;
 
 public class RestaurantChoice extends AppCompatActivity {
 
+    private lateinit var adapter: ArrayAdapter<*>
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_choice);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            android.R.layout.simple_dropdown_item_1line, RESTAURANTS);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.restaurantDropDown);
-        textView.setAdapter(adapter);
+
     }
 
     private static final String[] RESTAURANTS = new String[] {

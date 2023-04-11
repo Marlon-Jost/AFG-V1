@@ -14,4 +14,12 @@
     <string name="restaurantSearchDescriptionStr">Search for Restaurant</string>
     <string name="dropDownDescriptionStr">Search for Restaurant drop-down</string>
     <string name="restaurantSelectionPageTitleStr">Restaurant</string>
+    <string-array name="restaurant_array">
+        <item>
+            Burger King
+        </item>
+        <item>
+            Chipotle
+        </item>
+    </string-array>
 </resources>

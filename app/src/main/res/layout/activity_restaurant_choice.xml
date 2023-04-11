@@ -107,16 +107,28 @@
         app:srcCompat="@drawable/left_arrow"
         app:tint="@color/customBlue" />
 
-    <AutoCompleteTextView
-        android:id="@+id/restaurantDropDown"
-        android:layout_width="308dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="264dp"
-        android:text="AutoCompleteTextView"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topColorBlock" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_listView">
+            
+        </ListView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_emptyTextVeiw"
+            android:text="No Results"
+            android:textSize="20sp"
+            android:visability="gone"
+            android:layout_centerInParent="true"
+            />
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
