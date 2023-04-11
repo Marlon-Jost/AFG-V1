@@ -14,4 +14,9 @@
     <string name="restaurantSearchDescriptionStr">Search for Restaurant</string>
     <string name="dropDownDescriptionStr">Search for Restaurant drop-down</string>
     <string name="restaurantSelectionPageTitleStr">Restaurant</string>
+
+    <string name="foodNameExample">ex. Apples, bread, etc.</string>
+    <string name="servingSizeExample">ex. 1 cup, 2 slices, etc.</string>
+    <string name="gramsOfCarbsExample">ex. 15, 20, etc.</string>
+    <string name="servingFractionExample">Default 1 Ex. 1/2, 1/4, etc.</string>
 </resources>
