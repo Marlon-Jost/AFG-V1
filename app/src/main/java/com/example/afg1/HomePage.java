@@ -30,15 +30,9 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
-
 
         //The line below adds to Firebase when ran (Can be commented out when database isn't being updated)
-        //readQuestionDataField();
+        readQuestionDataField();
 
 
 
@@ -49,21 +43,21 @@ public class HomePage extends AppCompatActivity {
         super.onStart();
 
         //Comment out the line below when not pushing to database
-        //readQuestionDataFB();
+        readQuestionDataFB();
 
 
         //Get the Global Controller class object
         final Controller aController = (Controller) getApplicationContext();
 
         // Write a message to the database (Can be commented out when database isn't being updated)
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
-        //DatabaseReference myRef = database.getReference("Orders");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Orders");
 
         for(Order o: aController.getOrders()){
             Log.v("HomePage", "Order: "+o.getOrderName());
 
             //Code to push data to Firebase (Can be commented out when database isn't being updated)
-            //myRef.push().setValue(o);
+            myRef.push().setValue(o);
         }
     }
     private void readQuestionDataFB(){
