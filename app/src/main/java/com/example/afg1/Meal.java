@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Meal {
 	//Data
 	private ArrayList<Order> meal;
+	private String mealName;
 	private double totalCarbs;
 	private double servings; //may not be necessary
 	//Constructors
@@ -19,6 +20,7 @@ public class Meal {
 	 */
 	public Meal() {
 		meal = new ArrayList<Order>();
+		mealName = "";
 		totalCarbs = 0;
 		servings = 0;
 	}
@@ -31,6 +33,13 @@ public class Meal {
 		this.meal = meal;
 	}
 	//Methods
+
+	/**
+	 * set the meal name
+	 */
+	public void setMealName(String mealName) {
+		this.mealName = mealName;
+	}
 
 	/**
 	 * @return the meal

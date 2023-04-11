@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class RestaurantVsHome extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class RestaurantVsHome extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //if user is choosing from menu in restaurant (buttons for this don't exist yet)
+    //if user is choosing from menu in restaurant
     public void performRestaurantChoice(View v) {
         Intent intent = new Intent(this, RestaurantChoice.class);
         startActivity(intent);
@@ -31,5 +32,12 @@ public class RestaurantVsHome extends AppCompatActivity {
     public void performHomePage(View v) {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
+    }
+
+    /**
+     *
+     */
+    public void storeMealName() {
+
     }
 }
