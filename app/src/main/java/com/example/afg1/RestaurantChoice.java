@@ -10,7 +10,6 @@ import android.widget.AutoCompleteTextView;
 
 public class RestaurantChoice extends AppCompatActivity {
 
-    private lateinit var adapter: ArrayAdapter<*>
 
 
     @Override
