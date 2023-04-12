@@ -12,6 +12,11 @@
         android:theme="@style/Theme.AFG1"
         tools:targetApi="31">
         <activity
+            android:name=".MealBreakdown"
+            android:exported="false"
+            android:label="@string/title_activity_meal_breakdown"
+            android:theme="@style/Theme.AFG1.NoActionBar" />
+        <activity
             android:name=".FoodSearch"
             android:exported="false" />
         <activity
