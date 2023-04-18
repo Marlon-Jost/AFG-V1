@@ -31,4 +31,10 @@ public class MealConstruction extends AppCompatActivity {
         Intent intent = new Intent(this, FoodSearch.class);
         startActivity(intent);
     }
+
+    //if user finishes adding custom order, save info (wip) and go to meal breakdown page
+    public void performMealBreakdown(View v) {
+        Intent intent = new Intent(this, MealBreakdown.class);
+        startActivity(intent);
+    }
 }
