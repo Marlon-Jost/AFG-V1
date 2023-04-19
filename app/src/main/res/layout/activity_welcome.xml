@@ -53,14 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/inputMaxCarbsStr"
         android:inputType="numberSigned"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterMaxInstructions"
-        android:text="Input max carbs"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/enterMaxInstructions" />
 
     <Button
         android:id="@+id/button"
