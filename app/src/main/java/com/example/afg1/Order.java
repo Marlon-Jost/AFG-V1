@@ -13,7 +13,7 @@ public class Order {
 	//private double servingNum;
 	private String servingUnits;
 	private String orderName;
-	private String restaurant;
+	final private String restaurant;
 
 	// Constructors
 	/**
