@@ -98,7 +98,7 @@
         android:alpha="1"
         android:background="#00FE904D"
         android:contentDescription="@string/backButtonDescriptionStr"
-        android:onClick="performMealConstruction"
+        android:onClick="performFoodSearch"
         android:rotationY="-180"
         android:scaleX="@dimen/backButtonScale"
         android:scaleY="@dimen/backButtonScale"
