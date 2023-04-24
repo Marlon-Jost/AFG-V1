@@ -25,4 +25,6 @@ public class FoodSearch extends AppCompatActivity {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
+
+
 }

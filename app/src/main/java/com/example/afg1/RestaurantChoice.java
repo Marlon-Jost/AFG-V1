@@ -101,7 +101,7 @@ public class RestaurantChoice extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 
-        Query query = myRef.orderByChild("orderName").startAt(name).endAt(name + "\uf8ff");
+        Query query = myRef.orderByChild("restaurant").startAt(name).endAt(name + "\uf8ff");
 
 //        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
