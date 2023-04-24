@@ -16,13 +16,13 @@ public class MealConstruction extends AppCompatActivity {
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
     public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 
-    //if user presses back button, go back to restaurant vs home page
+    //if user presses back button, go back to food search page
     public void performRestaurantVsHomePage(View v) {
-        Intent intent = new Intent(this, RestaurantVsHome.class);
+        Intent intent = new Intent(this, FoodSearch.class);
         startActivity(intent);
     }
 

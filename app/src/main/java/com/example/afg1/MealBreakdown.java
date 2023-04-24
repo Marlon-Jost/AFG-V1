@@ -15,7 +15,7 @@ public class MealBreakdown extends AppCompatActivity {
     }
 
     public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 

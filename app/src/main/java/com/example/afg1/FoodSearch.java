@@ -20,9 +20,9 @@ public class FoodSearch extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //if user presses home button, go to home
+    //if user presses home button, go to welcome screen
     public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 }
