@@ -59,7 +59,7 @@
             android:alpha="1"
             android:background="#00FE904D"
             android:contentDescription="@string/backButtonDescriptionStr"
-            android:onClick="performMealConstruction"
+            android:onClick="performRestaurantChoice"
             android:scaleX="@dimen/backButtonScale"
             android:scaleY="@dimen/backButtonScale"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
             android:background="#00FFFFFF"
             android:contentDescription="@string/homeButtonDescriptionStr"
             android:foregroundTint="#000000"
-            android:onClick="performHomePage"
+            android:onClick="performWelcome"
             android:scaleX="4"
             android:scaleY="4"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -86,6 +86,40 @@
             app:srcCompat="@drawable/home_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/forwardButton"
+        android:layout_width="128dp"
+        android:layout_height="117dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="48dp"
+        android:layout_weight="1"
+        android:alpha="1"
+        android:background="#00FE904D"
+        android:contentDescription="@string/backButtonDescriptionStr"
+        android:onClick="performMealBreakdown"
+        android:rotationY="-180"
+        android:scaleX="@dimen/backButtonScale"
+        android:scaleY="@dimen/backButtonScale"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/left_arrow"
+        app:tint="@color/customBlue" />
+
+    <Button
+        android:id="@+id/manualInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#03A9F4"
+        android:onClick="performMealConstruction"
+        android:text="Can't find what you're looking for? Manually input food here!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
