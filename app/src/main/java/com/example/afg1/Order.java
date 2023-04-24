@@ -118,4 +118,13 @@ public class Order {
 	public void setServingUnits(String servingUnits) {
 		this.servingUnits = servingUnits;
 	}
+
+
+	/**
+	 * returns the name of the restaurant as a string
+	 * @return name of the restaurant
+	 */
+	public String getRestaurant(){
+		return restaurant;
+	}
 }

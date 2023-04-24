@@ -78,7 +78,7 @@ public class HomePage extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Order o = ds.getValue(Order.class);
                     aController.addOrder(o);
-                    Log.d("HomePage", "Order is: " + o.getOrderName());
+                    Log.d("HomePage", "Order is: " + o.getOrderName()+" from: "+ o.getRestaurant());
                 }
             }
 
