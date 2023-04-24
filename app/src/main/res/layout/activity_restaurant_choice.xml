@@ -107,14 +107,17 @@
         app:srcCompat="@drawable/left_arrow"
         app:tint="@color/customBlue" />
 
-    <AutoCompleteTextView
-        android:id="@+id/restaurantDropDown"
-        android:layout_width="308dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="264dp"
-        android:text="AutoCompleteTextView"
-        android:textSize="24sp"
+    <EditText
+        android:id="@+id/searchBarRestaurant"
+        android:layout_width="388dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="418dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:onClick="performSearch"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topColorBlock" />
 
