@@ -25,12 +25,6 @@
             android:name=".RestaurantChoice"
             android:exported="false" />
         <activity
-            android:name=".RestaurantVsHome"
-            android:exported="false" />
-        <activity
-            android:name=".HomePage"
-            android:exported="false" />
-        <activity
             android:name=".Welcome"
             android:exported="true">
             <intent-filter>
