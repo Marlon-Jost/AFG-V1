@@ -69,6 +69,8 @@ public class RestaurantChoice extends AppCompatActivity {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.searchBarRestaurant);
         String text = editText.getText().toString();
+        //passes "text" to the search method below
+        search(text);
         Log.d("RestaurantChoice", "Text #1 is: " + text);
 
         //continually updates the value of "text" as the user edits the input text

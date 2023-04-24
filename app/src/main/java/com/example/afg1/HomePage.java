@@ -31,14 +31,14 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
+        //myRef.setValue("Hello, World!");
 
 
         //The line below adds to Firebase when ran (Can be commented out when database isn't being updated)
-        //readQuestionDataField();
+        readQuestionDataField();
 
 
 
@@ -109,7 +109,7 @@ public class HomePage extends AppCompatActivity {
             while ((line = reader.readLine()) != null){
                 //split by comma
                 String[] feilds = line.split(",");
-                //Log.v("HomePage", feilds[0] + " " +feilds[1] + " " +feilds[2] + " " +feilds[3] + " " +feilds[4]);
+                Log.v("HomePage", feilds[0] + " " +feilds[1] + " " +feilds[2] + " " +feilds[3] + " " +feilds[4]);
                 Order o = new Order(feilds[0], feilds[1], Integer.parseInt(feilds[2]), Integer.parseInt(feilds[3]), feilds[4] );
                 aController.addOrder(o);
             }
