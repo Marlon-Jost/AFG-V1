@@ -24,8 +24,7 @@ public class Welcome extends AppCompatActivity {
 
         Button button = findViewById(R.id.button);
 
-        Meal meal= new Meal();
-        meal.setTotalCarbs(numOfMaxCarbs);
+        Controller.meal.setTotalCarbs(numOfMaxCarbs);
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }

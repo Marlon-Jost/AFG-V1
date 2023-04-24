@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 public class Controller extends Application {
 
-    ArrayList<Order> meal = new ArrayList<Order>(); //database may be a more appropriate name
+    static Meal meal = new Meal();
+    ArrayList<Order> orders = new ArrayList<Order>(); //database may be a more appropriate name
 
     public ArrayList<Order> getOrders(){
-        return meal;
+        return orders;
     }
-    public void addOrder(Order o){
-        meal.add(o);
+    public void addOrder(Order o) {
+        orders.add(o);
     }
 }
