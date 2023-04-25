@@ -97,7 +97,7 @@ public class RestaurantChoice extends AppCompatActivity {
     }
 
     //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
-    public void search(String name) {
+    private void search(String name) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 

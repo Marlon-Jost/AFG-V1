@@ -125,14 +125,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="@string/foodNameExample"
         android:inputType="textPersonName"
+        android:onClick="performSearch"
+        android:text="Name"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
+    <!--android:hint="@string/foodNameExample"-->
     <TextView
         android:id="@+id/servingSize"
         android:layout_width="wrap_content"

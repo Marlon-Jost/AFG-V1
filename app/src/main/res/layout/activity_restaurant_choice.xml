@@ -115,7 +115,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:onClick="performSearch"
-        android:text="Name"
+        android:text="Restaurant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
