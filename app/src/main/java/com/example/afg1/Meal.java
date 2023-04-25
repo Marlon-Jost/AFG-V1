@@ -73,6 +73,23 @@ public class Meal {
 	public void setServings(double servings) {
 		this.servings = servings;
 	}
+
+	/**
+	 * calculates to see if the carbs in are the orders meets the threshold set by maxCarbs.
+	 * @return true if the amount of carbs in the orders are less than or equal to the set maxCarbs, false otherwise
+	 */
+	public boolean checkCarbThreshold() {
+		int carbs = 0;
+		for (Order o: meal) {
+			carbs += o.getTotalCarbs();
+		}
+		if (carbs <= maxCarbs) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	public void addOrder(Order f) {
 		meal.add(f);
