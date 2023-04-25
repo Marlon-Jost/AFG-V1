@@ -18,8 +18,8 @@ public class MealBreakdown extends AppCompatActivity {
 
         TextView textNumCarbs = findViewById(R.id.textNumCarbs);
 
-        textNumCarbs.setText(Double.toString(Controller.meal.getTotalCarbs()));
-        double totalCarbs = Controller.meal.getTotalCarbs();
+        textNumCarbs.setText(Double.toString(Controller.meal.getMaxCarbs()));
+        double totalCarbs = Controller.meal.getMaxCarbs();
     }
 
     public void performHomePage(View v) {

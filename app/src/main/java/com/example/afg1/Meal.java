@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Meal {
 	//Data
 	private ArrayList<Order> meal;
-	private double totalCarbs;
+	private double maxCarbs;
 	private double servings; //may not be necessary
 	//Constructors
 	
@@ -19,7 +19,7 @@ public class Meal {
 	 */
 	public Meal() {
 		meal = new ArrayList<Order>();
-		totalCarbs = 0;
+		maxCarbs = 0;
 		servings = 0;
 	}
 
@@ -47,17 +47,17 @@ public class Meal {
 	}
 
 	/**
-	 * @return the totalCarbs
+	 * @return the maxCarbs
 	 */
-	public double getTotalCarbs() {
-		return totalCarbs;
+	public double getMaxCarbs() {
+		return maxCarbs;
 	}
 
 	/**
-	 * @param totalCarbs the totalCarbs to set
+	 * @param maxCarbs the maxCarbs to set
 	 */
-	public void setTotalCarbs(double totalCarbs) {
-		this.totalCarbs = totalCarbs;
+	public void setMaxCarbs(double maxCarbs) {
+		this.maxCarbs = maxCarbs;
 	}
 
 	/**
