@@ -83,11 +83,11 @@ public class MealConstruction extends AppCompatActivity {
     }
 
     //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
-    private void search(String name) {
+    private void search(String foodName) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 
-        Query query = myRef.orderByChild("orderName").startAt(name).endAt(name + "\uf8ff");
+        Query query = myRef.orderByChild("orderName").startAt(foodName).endAt(foodName + "\uf8ff");
 
         // For Firebase Realtime Database
         query.addListenerForSingleValueEvent(new ValueEventListener() { //filters the snapshot
@@ -95,9 +95,31 @@ public class MealConstruction extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 int size = (int) snapshot.getChildrenCount();
                 Log.d("MealConstruction","Size post filtered: " + Integer.toString(size));
+
+
+
                 if (snapshot.exists()) {
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        Log.d("MealConstruction", "Key is: " + childSnapshot.getKey() + " value is: " + childSnapshot.getValue());
+                        Log.d("MealConstruction", //"Key is: " + childSnapshot.getKey() +
+                                " value is: " + childSnapshot.getValue());
+
+                        if (size==1){
+                            String text = "";
+                            Order o = childSnapshot.getValue(Order.class);
+                            //Display serving size
+                            EditText editText = findViewById(R.id.inputServingSize);
+                            text = o.getServingSize() +" "+o.getServingUnits();
+                            editText.setText(text);
+
+                            //Display carbs per serving
+                            EditText editText2 = findViewById(R.id.inputGramsOfCarbs);
+                            text = o.getTotalCarbs() + " carbs";
+                            editText2.setText(text);
+
+                            //Display 1 for serving size by default
+                            EditText editText3 = findViewById(R.id.inputServingFraction);
+                            editText3.setText("1");
+                        }
                     }
                 } else {
                     Log.d("MealConstruction", "No data available");
