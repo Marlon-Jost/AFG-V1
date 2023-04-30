@@ -3,6 +3,7 @@ package com.example.afg1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class MealBreakdown extends AppCompatActivity {
 
     private Meal m;
     private String restaurant;
+    private Double maxCarbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +47,26 @@ public class MealBreakdown extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-
         TextView displayOrders = findViewById(R.id.idDisplayOrdersText);
-        String text = m.getOrderNames();
+        String text = m.getOrderNames()+"   \n";
         displayOrders.setText(text);
 
         TextView displayCarbs = findViewById(R.id.textNumCarbs);
-        text = Double.toString(m.getTotalCarbs());
-        displayCarbs.setText(text);
+        String totCarbs = Double.toString(m.getTotalCarbs());
+        displayCarbs.setText(totCarbs);
+
+        //receive the max carbs
+        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
+
+        if(maxCarbs<m.getTotalCarbs()){
+           displayCarbs.setTextColor(Color.RED);
+        }
+        else if(maxCarbs<m.getTotalCarbs()+(maxCarbs*0.5)){
+            displayCarbs.setTextColor(Color.YELLOW);
+        }
+        else{
+            displayCarbs.setTextColor(Color.GREEN);
+        }
 
     }
 
@@ -74,6 +88,9 @@ public class MealBreakdown extends AppCompatActivity {
         byte[] bytes = bos.toByteArray();
         //m.setRestaurant(restaurant);
         intent.putExtra("meal", bytes);
+
+        //pass on max carbs
+        intent.putExtra("maxCarbs",  Double.toString(maxCarbs));
 
         startActivity(intent);
     }

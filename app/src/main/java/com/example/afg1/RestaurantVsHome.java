@@ -21,7 +21,7 @@ public class RestaurantVsHome extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //if user is choosing from menu in restaurant (buttons for this don't exist yet)
+    //if user is choosing from menu in restaurant
     public void performRestaurantChoice(View v) {
         Intent intent = new Intent(this, RestaurantChoice.class);
         startActivity(intent);

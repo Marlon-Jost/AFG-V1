@@ -28,6 +28,7 @@ public class MealConstruction extends AppCompatActivity {
     private String restaurant;
     private Meal m;
     private Order order;
+    private double maxCarbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,9 @@ public class MealConstruction extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        //receive the max carbs
+        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
     }
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
@@ -77,14 +81,41 @@ public class MealConstruction extends AppCompatActivity {
     public void performMealBreakdown(View v) throws IOException {
         Intent intent = new Intent(this, MealBreakdown.class);
         intent.putExtra("restaurantString", restaurant);
+
+        //get the strings from the user input
+        EditText inputFoodName = findViewById(R.id.inputFoodName);
+        String orderName = inputFoodName.getText().toString();
+
+        EditText inputServingSize = findViewById(R.id.inputServingSize);
+        double servingSize = Double.parseDouble( inputServingSize.getText().toString());
+
+        EditText idInputServingUnits = findViewById(R.id.idInputServingUnits);
+        String servingUnits = idInputServingUnits.getText().toString();
+
+        EditText inputGramsOfCarbs = findViewById(R.id.inputGramsOfCarbs);
+        double carbs = Double.parseDouble( inputGramsOfCarbs.getText().toString());
+
+        EditText inputServingPercentage = findViewById(R.id.inputServingPercentage);
+        double servingPercentage = Double.parseDouble( inputServingPercentage.getText().toString());
+
+        //calculate carbs and serving size based on serving percentage
+        carbs=(servingPercentage/100.0)*carbs;
+        servingSize=(servingPercentage/100.0)*servingSize;
+
+        //make order
+        order = new Order(restaurant, orderName, carbs, servingSize, servingUnits );
+
         //pass on meal object
         m.addOrder(order);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream out = new ObjectOutputStream(bos);
         out.writeObject(m);
         byte[] bytes = bos.toByteArray();
-        //m.setRestaurant(restaurant);
         intent.putExtra("meal", bytes);
+
+        //pass on max carbs
+        intent.putExtra("maxCarbs",  Double.toString(maxCarbs));
+
         startActivity(intent);
     }
 
@@ -144,7 +175,7 @@ public class MealConstruction extends AppCompatActivity {
                         if (size == 1) {
                             String text = "";
                             Order o = childSnapshot.getValue(Order.class);
-                            order = o;
+//                            order = o;
                             if (o.getRestaurant().equals(restaurant)) {
                                 //Display serving size (number)
                                 EditText editText = findViewById(R.id.inputServingSize);
@@ -162,8 +193,8 @@ public class MealConstruction extends AppCompatActivity {
                                 editText2.setText(text);
 
                                 //Display 1 for serving size by default
-                                EditText editText3 = findViewById(R.id.inputServingFraction);
-                                editText3.setText("1");
+                                EditText editText3 = findViewById(R.id.inputServingPercentage);
+                                editText3.setText("100");
                             }
                         }
                         else{
@@ -185,7 +216,7 @@ public class MealConstruction extends AppCompatActivity {
                             editText2.setText(text);
 
                             //Display 1 for serving size by default as blank
-                            EditText editText3 = findViewById(R.id.inputServingFraction);
+                            EditText editText3 = findViewById(R.id.inputServingPercentage);
                             editText3.setText("");
                         }
                     }

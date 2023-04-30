@@ -51,28 +51,28 @@
         android:id="@+id/inputMaxCarbs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="numberSigned"
+        android:hint="input max carbs"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterMaxInstructions"
-        android:text="Input max carbs"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/enterMaxInstructions" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
         android:backgroundTint="#03A9F4"
-        android:onClick="performHomePage"
+        android:onClick="performRestaurantChoice"
         android:text="Finish!"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputMaxCarbs" />
+        app:layout_constraintTop_toBottomOf="@+id/enterMaxInstructions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -111,15 +111,15 @@
         android:id="@+id/searchBarRestaurant"
         android:layout_width="388dp"
         android:layout_height="115dp"
-        android:layout_marginTop="418dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:onClick="performSearch"
         android:text="Restaurant"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topColorBlock" />
+        app:layout_constraintTop_toBottomOf="@+id/topColorBlock"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

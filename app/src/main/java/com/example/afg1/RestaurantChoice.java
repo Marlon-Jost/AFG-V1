@@ -32,17 +32,16 @@ public class RestaurantChoice extends AppCompatActivity {
 
     private String restaurant;
 
+    private double maxCarbs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_choice);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//            android.R.layout.simple_dropdown_item_1line, RESTAURANTS);
-//        AutoCompleteTextView textView = (AutoCompleteTextView)
-//                findViewById(R.id.restaurantDropDown);
-//        textView.setAdapter(adapter);
 
-
+        //receive the max carbs
+        Intent mIntent = getIntent();
+        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
     }
 
     public void setDatabase(FirebaseDatabase database) {
@@ -69,12 +68,15 @@ public class RestaurantChoice extends AppCompatActivity {
 
         //pass on meal object
         Meal m = new Meal();
+        m.setRestaurant(restaurant);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream out = new ObjectOutputStream(bos);
         out.writeObject(m);
         byte[] bytes = bos.toByteArray();
-        m.setRestaurant(restaurant);
         intent.putExtra("meal", bytes);
+
+        //pass on max carbs
+        intent.putExtra("maxCarbs", Double.toString(maxCarbs));
 
         startActivity(intent);
     }

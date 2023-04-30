@@ -25,7 +25,7 @@
         android:scaleY="@dimen/backButtonScale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputServingFraction"
+        app:layout_constraintTop_toBottomOf="@+id/inputServingPercentage"
         app:srcCompat="@drawable/left_arrow"
         app:tint="@color/customBlue" />
 
@@ -198,7 +198,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Fraction of Serving You're Eating"
+        android:text="Percentage of Serving You're Eating"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -206,7 +206,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputGramsOfCarbs" />
 
     <EditText
-        android:id="@+id/inputServingFraction"
+        android:id="@+id/inputServingPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
