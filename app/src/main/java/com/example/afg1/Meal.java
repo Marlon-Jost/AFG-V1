@@ -1,80 +1,104 @@
 /**
  * Meal class holds information about each meal.
- * @author marlon
  *
+ * @author marlon
  */
 package com.example.afg1;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Meal {
-	//Data
-	private ArrayList<Order> meal;
-	private double totalCarbs;
-	private double servings; //may not be necessary
-	//Constructors
-	
-	/**
-	 * Default constructor. Sets each value to zero or empty 
-	 */
-	public Meal() {
-		meal = new ArrayList<Order>();
-		totalCarbs = 0;
-		servings = 0;
-	}
+public class Meal implements Serializable {
+    //Data
+    private ArrayList<Order> meal;
+    private double totalCarbs;
+    private double servings; //may not be necessary
 
-	/**
-	 * parameterized constructor takes ArrayList of orders as input
-	 * @param meal
-	 */
-	public Meal(ArrayList<Order> meal) {
-		this.meal = meal;
-	}
-	//Methods
+    private String restaurant;
+    //Constructors
 
-	/**
-	 * @return the meal
-	 */
-	public ArrayList<Order> getMeal() {
-		return meal;
-	}
+    /**
+     * Default constructor. Sets each value to zero or empty
+     */
+    public Meal() {
+        meal = new ArrayList<Order>();
+        totalCarbs = 0;
+        servings = 0;
+    }
 
-	/**
-	 * @param meal the meal to set
-	 */
-	public void setMeal(ArrayList<Order> meal) {
-		this.meal = meal;
-	}
+    /**
+     * parameterized constructor takes ArrayList of orders as input
+     * @param meal
+     */
+    public Meal(ArrayList<Order> meal) {
+        this.meal = meal;
+    }
+    //Methods
 
-	/**
-	 * @return the totalCarbs
-	 */
-	public double getTotalCarbs() {
-		return totalCarbs;
-	}
+    /**
+     * @return the meal
+     */
+    public ArrayList<Order> getMeal() {
+        return meal;
+    }
 
-	/**
-	 * @param totalCarbs the totalCarbs to set
-	 */
-	public void setTotalCarbs(double totalCarbs) {
-		this.totalCarbs = totalCarbs;
-	}
+    /**
+     * @param meal the meal to set
+     */
+    public void setMeal(ArrayList<Order> meal) {
+        this.meal = meal;
+    }
 
-	/**
-	 * @return the servings
-	 */
-	public double getServings() {
-		return servings;
-	}
+    /**
+     * @return the totalCarbs
+     */
+    public double getTotalCarbs() {
+        int temp = 0;
+        for (Order o: meal){
+            temp+=o.getTotalCarbs();
+        }
+        totalCarbs = temp;
+        return totalCarbs;
+    }
 
-	/**
-	 * @param servings the servings to set
-	 */
-	public void setServings(double servings) {
-		this.servings = servings;
-	}
-	
-	public void addOrder(Order f) {
-		meal.add(f);
-	}
+    /**
+     * @param totalCarbs the totalCarbs to set
+     */
+    public void setTotalCarbs(double totalCarbs) {
+        this.totalCarbs = totalCarbs;
+    }
+
+    /**
+     * @return the servings
+     */
+    public double getServings() {
+        return servings;
+    }
+
+    /**
+     * @param servings the servings to set
+     */
+    public void setServings(double servings) {
+        this.servings = servings;
+    }
+
+    public void addOrder(Order f) {
+        meal.add(f);
+    }
+
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(String r) {
+        restaurant = r;
+    }
+
+    public String getOrderNames(){
+        String temp = "";
+        for (Order o: meal){
+            temp += o.getOrderName();
+        }
+        return temp;
+    }
 }

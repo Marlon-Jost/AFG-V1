@@ -6,7 +6,8 @@
  */
 package com.example.afg1;
 
-public class Order {
+import java.io.Serializable;
+public class Order implements Serializable {
 	// Data
 	private double totalCarbs;
 	private double servingSize;

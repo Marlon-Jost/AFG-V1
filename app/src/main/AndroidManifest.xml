@@ -16,9 +16,6 @@
             android:name=".MealBreakdown"
             android:exported="false" />
         <activity
-            android:name=".FoodSearch"
-            android:exported="false" />
-        <activity
             android:name=".MealConstruction"
             android:exported="false" />
         <activity

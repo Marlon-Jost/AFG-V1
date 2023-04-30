@@ -17,12 +17,42 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class MealConstruction extends AppCompatActivity {
+
+    private String restaurant;
+    private Meal m;
+    private Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_construction);
+
+        Intent mIntent = getIntent();
+        restaurant = mIntent.getExtras().getString("restaurantString");
+
+        byte[] bytes =  mIntent.getExtras().getByteArray("meal");
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        ObjectInputStream in = null;
+        try {
+            in = new ObjectInputStream(bis);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            m = (Meal)in.readObject();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
@@ -37,18 +67,26 @@ public class MealConstruction extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //if user wants to add a food, go to food search page
-    public void performFoodSearch(View v) {
-        Intent intent = new Intent(this, FoodSearch.class);
-        startActivity(intent);
-    }
+//    //if user wants to add a food, go to food search page
+//    public void performFoodSearch(View v) {
+//        Intent intent = new Intent(this, FoodSearch.class);
+//        startActivity(intent);
+//    }
 
     //if user finishes adding custom order, save info (wip) and go to meal breakdown page
-    public void performMealBreakdown(View v) {
+    public void performMealBreakdown(View v) throws IOException {
         Intent intent = new Intent(this, MealBreakdown.class);
+        intent.putExtra("restaurantString", restaurant);
+        //pass on meal object
+        m.addOrder(order);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(bos);
+        out.writeObject(m);
+        byte[] bytes = bos.toByteArray();
+        //m.setRestaurant(restaurant);
+        intent.putExtra("meal", bytes);
         startActivity(intent);
     }
-
 
 
     public void performSearch(View v) {
@@ -84,18 +122,18 @@ public class MealConstruction extends AppCompatActivity {
 
     //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
     private void search(String foodName) {
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 
+        //myRef.orderByChild("restaurant").startAt(restaurant).endAt(restaurant + "\uf8ff");
         Query query = myRef.orderByChild("orderName").startAt(foodName).endAt(foodName + "\uf8ff");
 
-        // For Firebase Realtime Database
         query.addListenerForSingleValueEvent(new ValueEventListener() { //filters the snapshot
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 int size = (int) snapshot.getChildrenCount();
-                Log.d("MealConstruction","Size post filtered: " + Integer.toString(size));
-
+                Log.d("MealConstruction", "Size post filtered: " + Integer.toString(size));
 
 
                 if (snapshot.exists()) {
@@ -103,22 +141,52 @@ public class MealConstruction extends AppCompatActivity {
                         Log.d("MealConstruction", //"Key is: " + childSnapshot.getKey() +
                                 " value is: " + childSnapshot.getValue());
 
-                        if (size==1){
+                        if (size == 1) {
                             String text = "";
                             Order o = childSnapshot.getValue(Order.class);
-                            //Display serving size
+                            order = o;
+                            if (o.getRestaurant().equals(restaurant)) {
+                                //Display serving size (number)
+                                EditText editText = findViewById(R.id.inputServingSize);
+                                text = Double.toString(o.getServingSize());
+                                editText.setText(text);
+
+                                //Display serving size (number)
+                                EditText editText4 = findViewById(R.id.idInputServingUnits);
+                                text = o.getServingUnits();
+                                editText4.setText(text);
+
+                                //Display carbs per serving
+                                EditText editText2 = findViewById(R.id.inputGramsOfCarbs);
+                                text = Double.toString(o.getTotalCarbs());// + " carbs";
+                                editText2.setText(text);
+
+                                //Display 1 for serving size by default
+                                EditText editText3 = findViewById(R.id.inputServingFraction);
+                                editText3.setText("1");
+                            }
+                        }
+                        else{
+                            String text = "";
+                            Order o = childSnapshot.getValue(Order.class);
+                            //Display serving size (number) as blank
                             EditText editText = findViewById(R.id.inputServingSize);
-                            text = o.getServingSize() +" "+o.getServingUnits();
+                            text = "";
                             editText.setText(text);
 
-                            //Display carbs per serving
+                            //Display serving size (number) as blank
+                            EditText editText4 = findViewById(R.id.idInputServingUnits);
+                            text = "";
+                            editText4.setText(text);
+
+                            //Display carbs per serving as blank
                             EditText editText2 = findViewById(R.id.inputGramsOfCarbs);
-                            text = o.getTotalCarbs() + " carbs";
+                            text = "";
                             editText2.setText(text);
 
-                            //Display 1 for serving size by default
+                            //Display 1 for serving size by default as blank
                             EditText editText3 = findViewById(R.id.inputServingFraction);
-                            editText3.setText("1");
+                            editText3.setText("");
                         }
                     }
                 } else {

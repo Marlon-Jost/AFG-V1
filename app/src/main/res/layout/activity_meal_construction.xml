@@ -12,6 +12,7 @@
         android:id="@+id/forwardButton2"
         android:layout_width="128dp"
         android:layout_height="117dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
         android:layout_weight="1"
@@ -24,6 +25,7 @@
         android:scaleY="@dimen/backButtonScale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputServingFraction"
         app:srcCompat="@drawable/left_arrow"
         app:tint="@color/customBlue" />
 
@@ -111,13 +113,13 @@
         android:id="@+id/foodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="28dp"
         android:text="Food Name"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/topColorBlock" />
 
     <EditText
         android:id="@+id/inputFoodName"
@@ -128,6 +130,7 @@
         android:inputType="textPersonName"
         android:onClick="performSearch"
         android:text="Name"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -135,11 +138,12 @@
         app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
     <!--android:hint="@string/foodNameExample"-->
+
     <TextView
         android:id="@+id/servingSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="One Serving Size"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,15 +153,16 @@
 
     <EditText
         android:id="@+id/inputServingSize"
-        android:layout_width="wrap_content"
+        android:layout_width="204dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/servingSizeExample"
         android:inputType="textPersonName"
+        android:textAlignment="viewEnd"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servingSize" />
 
@@ -181,6 +186,7 @@
         android:ems="10"
         android:hint="@string/gramsOfCarbsExample"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -207,11 +213,24 @@
         android:ems="10"
         android:hint="@string/servingFractionExample"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servingFraction" />
+
+    <EditText
+        android:id="@+id/idInputServingUnits"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/servingUnits"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputServingSize"
+        app:layout_constraintStart_toEndOf="@+id/inputServingSize"
+        app:layout_constraintTop_toTopOf="@+id/inputServingSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

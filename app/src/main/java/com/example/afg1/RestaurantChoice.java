@@ -21,9 +21,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 public class RestaurantChoice extends AppCompatActivity {
 
     private FirebaseDatabase data;
+
+    private String restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +61,21 @@ public class RestaurantChoice extends AppCompatActivity {
     }
 
     //if user finishes choosing a restaurant, going to meal creation page
-    public void performMealConstruction(View v) {
+    public void performMealConstruction(View v) throws IOException {
         Intent intent = new Intent(this, MealConstruction.class);
+
+        //pass on restaurant string
+        intent.putExtra("restaurantString", restaurant);
+
+        //pass on meal object
+        Meal m = new Meal();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(bos);
+        out.writeObject(m);
+        byte[] bytes = bos.toByteArray();
+        m.setRestaurant(restaurant);
+        intent.putExtra("meal", bytes);
+
         startActivity(intent);
     }
 
@@ -98,6 +118,7 @@ public class RestaurantChoice extends AppCompatActivity {
 
     //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
     private void search(String name) {
+        restaurant = name;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 
