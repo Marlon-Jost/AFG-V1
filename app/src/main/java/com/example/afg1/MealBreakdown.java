@@ -94,4 +94,9 @@ public class MealBreakdown extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    public void performWelcome(View v) {
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+    }
 }
