@@ -126,23 +126,6 @@ public class RestaurantChoice extends AppCompatActivity {
 
         Query query = myRef.orderByChild("restaurant").startAt(name).endAt(name + "\uf8ff");
 
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                int size = (int) dataSnapshot.getChildrenCount();
-//                Log.d("RestaurantChoice","Size pre filtered: " + Integer.toString(size));
-//                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-//                    Log.d("RestaurantChoice", String.valueOf(childSnapshot));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Handle errors here
-//            }
-//        });
-
-
         // For Firebase Realtime Database
         query.addListenerForSingleValueEvent(new ValueEventListener() { //filters the snapshot
             @Override
