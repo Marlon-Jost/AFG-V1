@@ -48,7 +48,7 @@ public class MealBreakdown extends AppCompatActivity {
         }
 
         TextView displayOrders = findViewById(R.id.idDisplayOrdersText);
-        String text = m.getOrderNames()+"   \n";
+        String text = m.getOrderNames();
         displayOrders.setText(text);
 
         TextView displayCarbs = findViewById(R.id.textNumCarbs);
@@ -96,7 +96,7 @@ public class MealBreakdown extends AppCompatActivity {
     }
 
     public void performWelcome(View v) {
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 }

@@ -49,10 +49,10 @@
 
     <EditText
         android:id="@+id/inputMaxCarbs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="332dp"
+        android:layout_height="56dp"
         android:ems="10"
-        android:hint="input max carbs"
+        android:hint="input max carbs in grams"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textSize="24sp"

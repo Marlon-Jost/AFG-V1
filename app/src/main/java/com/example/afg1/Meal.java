@@ -97,7 +97,7 @@ public class Meal implements Serializable {
     public String getOrderNames(){
         String temp = "";
         for (Order o: meal){
-            temp += o.getOrderName();
+            temp += o.getOrderName()+"\n";
         }
         return temp;
     }

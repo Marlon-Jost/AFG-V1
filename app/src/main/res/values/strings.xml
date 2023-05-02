@@ -20,4 +20,5 @@
     <string name="gramsOfCarbsExample">ex. 15, 20, etc.</string>
     <string name="servingFractionExample">Default 100 Ex. 10, 20, etc.</string>
     <string name="servingUnits">ex. grams, carbs, etc.</string>
+    <string name="repeatOrderConstruction">Add Order</string>
 </resources>

@@ -149,21 +149,24 @@
         android:id="@+id/button2"
         android:layout_width="151dp"
         android:layout_height="88dp"
+        android:backgroundTint="@color/customBlue"
         android:onClick="performMealConstruction"
-        android:text="Button"
+        android:text="@string/repeatOrderConstruction"
         app:layout_constraintBottom_toTopOf="@+id/bottomColorBlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topColorBlock"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.713" />
 
     <TextView
         android:id="@+id/idDisplayOrdersText"
         android:layout_width="320dp"
-        android:layout_height="39dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="TextView"
-        android:textSize="14sp"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

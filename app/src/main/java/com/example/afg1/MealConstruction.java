@@ -38,7 +38,7 @@ public class MealConstruction extends AppCompatActivity {
         Intent mIntent = getIntent();
         restaurant = mIntent.getExtras().getString("restaurantString");
 
-        byte[] bytes =  mIntent.getExtras().getByteArray("meal");
+        byte[] bytes = mIntent.getExtras().getByteArray("meal");
 
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         ObjectInputStream in = null;
@@ -48,7 +48,7 @@ public class MealConstruction extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         try {
-            m = (Meal)in.readObject();
+            m = (Meal) in.readObject();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -56,7 +56,7 @@ public class MealConstruction extends AppCompatActivity {
         }
 
         //receive the max carbs
-        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
+        maxCarbs = Double.parseDouble(mIntent.getExtras().getString("maxCarbs"));
     }
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
@@ -68,6 +68,20 @@ public class MealConstruction extends AppCompatActivity {
     //if user presses back button, go back to restaurant vs home page
     public void performRestaurantVsHomePage(View v) {
         Intent intent = new Intent(this, RestaurantVsHome.class);
+        startActivity(intent);
+    }
+
+    public void performRestaurantChoice(View v) {
+        Intent intent = new Intent(this, RestaurantChoice.class);
+
+        //pass on max carbs
+        intent.putExtra("maxCarbs", maxCarbs);
+
+        startActivity(intent);
+    }
+
+    public void performWelcome(View v) {
+        Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 
@@ -84,26 +98,61 @@ public class MealConstruction extends AppCompatActivity {
 
         //get the strings from the user input
         EditText inputFoodName = findViewById(R.id.inputFoodName);
-        String orderName = inputFoodName.getText().toString();
+        String orderName;
+
+        //catch empty input
+        if (inputFoodName.getText().toString().isEmpty() == false) {
+            orderName = inputFoodName.getText().toString();
+        } else {
+            orderName = "blank";
+        }
 
         EditText inputServingSize = findViewById(R.id.inputServingSize);
-        double servingSize = Double.parseDouble( inputServingSize.getText().toString());
+        double servingSize;
+
+        //catch empty input
+        if (inputServingSize.getText().toString().isEmpty() == false) {
+            servingSize = Double.parseDouble(inputServingSize.getText().toString());
+        } else {
+            servingSize = 0;
+        }
 
         EditText idInputServingUnits = findViewById(R.id.idInputServingUnits);
-        String servingUnits = idInputServingUnits.getText().toString();
+        String servingUnits;
+
+        //catch empty input
+        if (idInputServingUnits.getText().toString().isEmpty() == false) {
+            servingUnits = idInputServingUnits.getText().toString();
+        } else {
+            servingUnits = "0";
+        }
 
         EditText inputGramsOfCarbs = findViewById(R.id.inputGramsOfCarbs);
-        double carbs = Double.parseDouble( inputGramsOfCarbs.getText().toString());
+        double carbs ;
+
+        //catch empty input
+        if (inputGramsOfCarbs.getText().toString().isEmpty() == false) {
+            carbs = Double.parseDouble(inputGramsOfCarbs.getText().toString());
+        } else {
+            carbs = 0;
+        }
 
         EditText inputServingPercentage = findViewById(R.id.inputServingPercentage);
-        double servingPercentage = Double.parseDouble( inputServingPercentage.getText().toString());
+        double servingPercentage;
+
+        //catch empty input
+        if (inputServingPercentage.getText().toString().isEmpty() == false) {
+            servingPercentage = Double.parseDouble(inputServingPercentage.getText().toString());
+        } else {
+            servingPercentage = 0;
+        }
 
         //calculate carbs and serving size based on serving percentage
-        carbs=(servingPercentage/100.0)*carbs;
-        servingSize=(servingPercentage/100.0)*servingSize;
+        carbs = (servingPercentage / 100.0) * carbs;
+        servingSize = (servingPercentage / 100.0) * servingSize;
 
         //make order
-        order = new Order(restaurant, orderName, carbs, servingSize, servingUnits );
+        order = new Order(restaurant, orderName, carbs, servingSize, servingUnits);
 
         //pass on meal object
         m.addOrder(order);
@@ -114,7 +163,7 @@ public class MealConstruction extends AppCompatActivity {
         intent.putExtra("meal", bytes);
 
         //pass on max carbs
-        intent.putExtra("maxCarbs",  Double.toString(maxCarbs));
+        intent.putExtra("maxCarbs", Double.toString(maxCarbs));
 
         startActivity(intent);
     }
@@ -196,8 +245,7 @@ public class MealConstruction extends AppCompatActivity {
                                 EditText editText3 = findViewById(R.id.inputServingPercentage);
                                 editText3.setText("100");
                             }
-                        }
-                        else{
+                        } else {
                             String text = "";
                             Order o = childSnapshot.getValue(Order.class);
                             //Display serving size (number) as blank

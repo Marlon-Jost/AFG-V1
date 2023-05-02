@@ -34,6 +34,8 @@ public class RestaurantChoice extends AppCompatActivity {
 
     private double maxCarbs;
 
+    private boolean validRestaurant;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class RestaurantChoice extends AppCompatActivity {
 
         //receive the max carbs
         Intent mIntent = getIntent();
-        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
+        maxCarbs = Double.parseDouble(mIntent.getExtras().getString("maxCarbs"));
     }
 
     public void setDatabase(FirebaseDatabase database) {
@@ -61,6 +63,11 @@ public class RestaurantChoice extends AppCompatActivity {
 
     //if user finishes choosing a restaurant, going to meal creation page
     public void performMealConstruction(View v) throws IOException {
+
+        if (validRestaurant==false){
+            return;
+        }
+
         Intent intent = new Intent(this, MealConstruction.class);
 
         //pass on restaurant string
@@ -87,6 +94,11 @@ public class RestaurantChoice extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void performWelcome(View v) {
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
+    }
+
     public void performSearch(View v) {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.searchBarRestaurant);
@@ -94,6 +106,7 @@ public class RestaurantChoice extends AppCompatActivity {
         //passes "text" to the search method below
         search(text);
         Log.d("RestaurantChoice", "Text #1 is: " + text);
+        validRestaurant = false;
 
         //continually updates the value of "text" as the user edits the input text
         editText.addTextChangedListener(new TextWatcher() {
@@ -114,6 +127,7 @@ public class RestaurantChoice extends AppCompatActivity {
                 //passes "text" to the search method below
                 search(text);
                 Log.d("RestaurantChoice", "Text #2 is: " + text);
+                validRestaurant = false;
             }
         });
     }
@@ -124,14 +138,17 @@ public class RestaurantChoice extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 
-        Query query = myRef.orderByChild("restaurant").startAt(name).endAt(name + "\uf8ff");
+        Query query = myRef.orderByChild("restaurant").startAt(name).endAt(name);// + "\uf8ff");
 
         // For Firebase Realtime Database
         query.addListenerForSingleValueEvent(new ValueEventListener() { //filters the snapshot
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 int size = (int) snapshot.getChildrenCount();
-                Log.d("RestaurantChoice","Size post filtered: " + Integer.toString(size));
+                if (size > 0 && name!="" &&name !=" "&&name!=null) {
+                    validRestaurant = true;
+                }
+                Log.d("RestaurantChoice", "Size post filtered: " + Integer.toString(size));
                 if (snapshot.exists()) {
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                         Log.d("RestaurantChoice", "Key is: " + childSnapshot.getKey() + " value is: " + childSnapshot.getValue());
