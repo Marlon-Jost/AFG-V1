@@ -126,4 +126,9 @@ public class Order implements Serializable {
 	public String getRestaurant(){
 		return restaurant;
 	}
+	@Override
+	public String toString(){
+		return "Order "+orderName+" has "+totalCarbs+" grams of carbs and is from "+restaurant;
+	}
 }
+

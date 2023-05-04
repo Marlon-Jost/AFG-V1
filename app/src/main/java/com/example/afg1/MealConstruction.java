@@ -219,13 +219,14 @@ public class MealConstruction extends AppCompatActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                         Log.d("MealConstruction", //"Key is: " + childSnapshot.getKey() +
-                                " value is: " + childSnapshot.getValue());
+                                "value is: " + childSnapshot.getValue());
 
                         if (size == 1) {
                             String text = "";
                             Order o = childSnapshot.getValue(Order.class);
 //                            order = o;
                             if (o.getRestaurant().equals(restaurant)) {
+                                Log.d("OrderExists", "order o = "+o.toString());
                                 //Display serving size (number)
                                 EditText editText = findViewById(R.id.inputServingSize);
                                 text = Double.toString(o.getServingSize());
