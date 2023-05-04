@@ -82,6 +82,9 @@ public class MealConstruction extends AppCompatActivity {
 
     public void performWelcome(View v) {
         Intent intent = new Intent(this, Welcome.class);
+
+        intent.putExtra("want to return to restaurant choice", true );
+
         startActivity(intent);
     }
 

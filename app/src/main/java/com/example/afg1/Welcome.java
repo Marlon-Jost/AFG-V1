@@ -13,6 +13,12 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        Intent mIntent = getIntent();
+        if(mIntent.getExtras().getBoolean("want to return to restaurant choice")){
+            //performRestaurantChoice();
+        }
+
     }
 
     //after start screen, go to home
