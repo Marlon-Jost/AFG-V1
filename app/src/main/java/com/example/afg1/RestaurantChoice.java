@@ -43,19 +43,15 @@ public class RestaurantChoice extends AppCompatActivity {
 
         //receive the max carbs
         Intent mIntent = getIntent();
-        maxCarbs = Double.parseDouble(mIntent.getExtras().getString("maxCarbs"));
+        this.maxCarbs  =  mIntent.getExtras().getDouble("maxCarbs");
+        Log.d("maxCarbs", "maxCarbs after passed = "+maxCarbs);
     }
 
     public void setDatabase(FirebaseDatabase database) {
         data = database;
     }
 
-    private static final String[] RESTAURANTS = new String[]{
-            "panera", "starbucks", "taco bell"
-    };
-
-
-    //if user presses back button, going back to restaurant vs home meal page
+     //if user presses back button, going back to restaurant vs home meal page
     public void performRestaurantVsHome(View v) {
         Intent intent = new Intent(this, RestaurantVsHome.class);
         startActivity(intent);
@@ -64,7 +60,7 @@ public class RestaurantChoice extends AppCompatActivity {
     //if user finishes choosing a restaurant, going to meal creation page
     public void performMealConstruction(View v) throws IOException {
 
-        if (validRestaurant==false){
+        if (!validRestaurant){
             return;
         }
 

@@ -15,9 +15,9 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         Intent mIntent = getIntent();
-        if(mIntent.getExtras().getBoolean("want to return to restaurant choice")){
+        //if(mIntent.getExtras().getBoolean("want to return to restaurant choice")){
             //performRestaurantChoice();
-        }
+       // }
 
     }
 
@@ -33,14 +33,15 @@ public class Welcome extends AppCompatActivity {
 
         EditText editText = findViewById(R.id.inputMaxCarbs);
         String maxCarbs;
-        if (editText.getText().toString().isEmpty()==false){
+        if (!editText.getText().toString().isEmpty()){
             maxCarbs = editText.getText().toString();
         }
         else{
             maxCarbs="0";
         }
+        Double maxCarbsDouble = Double.parseDouble(maxCarbs);
         //pass on max carbs
-        intent.putExtra("maxCarbs", maxCarbs);
+        intent.putExtra("maxCarbs", maxCarbsDouble);
 
         startActivity(intent);
     }

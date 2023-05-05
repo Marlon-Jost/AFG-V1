@@ -30,6 +30,8 @@ public class MealConstruction extends AppCompatActivity {
     private Order order;
     private double maxCarbs;
 
+    private boolean filledName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,9 @@ public class MealConstruction extends AppCompatActivity {
 
         //receive the max carbs
         maxCarbs = Double.parseDouble(mIntent.getExtras().getString("maxCarbs"));
+        Log.d("maxCarbs", "maxCarbs = "+maxCarbs);
+
+        filledName = false;
     }
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
@@ -73,6 +78,8 @@ public class MealConstruction extends AppCompatActivity {
 
     public void performRestaurantChoice(View v) {
         Intent intent = new Intent(this, RestaurantChoice.class);
+
+        Log.d("maxCarbs", "maxCarbs before passed = "+maxCarbs);
 
         //pass on max carbs
         intent.putExtra("maxCarbs", maxCarbs);
@@ -104,7 +111,7 @@ public class MealConstruction extends AppCompatActivity {
         String orderName;
 
         //catch empty input
-        if (inputFoodName.getText().toString().isEmpty() == false) {
+        if (!inputFoodName.getText().toString().isEmpty()) {
             orderName = inputFoodName.getText().toString();
         } else {
             orderName = "blank";
@@ -114,7 +121,7 @@ public class MealConstruction extends AppCompatActivity {
         double servingSize;
 
         //catch empty input
-        if (inputServingSize.getText().toString().isEmpty() == false) {
+        if (!inputServingSize.getText().toString().isEmpty()) {
             servingSize = Double.parseDouble(inputServingSize.getText().toString());
         } else {
             servingSize = 0;
@@ -124,7 +131,7 @@ public class MealConstruction extends AppCompatActivity {
         String servingUnits;
 
         //catch empty input
-        if (idInputServingUnits.getText().toString().isEmpty() == false) {
+        if (!idInputServingUnits.getText().toString().isEmpty()) {
             servingUnits = idInputServingUnits.getText().toString();
         } else {
             servingUnits = "0";
@@ -134,7 +141,7 @@ public class MealConstruction extends AppCompatActivity {
         double carbs ;
 
         //catch empty input
-        if (inputGramsOfCarbs.getText().toString().isEmpty() == false) {
+        if (!inputGramsOfCarbs.getText().toString().isEmpty()) {
             carbs = Double.parseDouble(inputGramsOfCarbs.getText().toString());
         } else {
             carbs = 0;
@@ -144,7 +151,7 @@ public class MealConstruction extends AppCompatActivity {
         double servingPercentage;
 
         //catch empty input
-        if (inputServingPercentage.getText().toString().isEmpty() == false) {
+        if (!inputServingPercentage.getText().toString().isEmpty()) {
             servingPercentage = Double.parseDouble(inputServingPercentage.getText().toString());
         } else {
             servingPercentage = 0;
@@ -179,7 +186,7 @@ public class MealConstruction extends AppCompatActivity {
         //passes "text" to the search method below
         search(text);
         Log.d("MealConstruction", "Text #1 is: " + text);
-
+        filledName=false;
         //continually updates the value of "text" as the user edits the input text
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -216,7 +223,7 @@ public class MealConstruction extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 int size = (int) snapshot.getChildrenCount();
-                Log.d("MealConstruction", "Size post filtered: " + Integer.toString(size));
+                Log.d("MealConstruction", "Size post filtered: " + (size));
 
 
                 if (snapshot.exists()) {
@@ -248,6 +255,12 @@ public class MealConstruction extends AppCompatActivity {
                                 //Display 1 for serving size by default
                                 EditText editText3 = findViewById(R.id.inputServingPercentage);
                                 editText3.setText("100");
+                                if(!filledName){
+                                    //Autofill food name
+                                    EditText editText5 = findViewById(R.id.inputFoodName);
+                                    editText5.setText(o.getOrderName());
+                                    filledName = true;
+                                }
                             }
                         } else {
                             String text = "";
