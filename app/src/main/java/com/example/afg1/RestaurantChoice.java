@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.DataSnapshot;
@@ -61,6 +62,7 @@ public class RestaurantChoice extends AppCompatActivity {
     public void performMealConstruction(View v) throws IOException {
 
         if (!validRestaurant){
+            Toast.makeText(getApplicationContext(), "Pick valid restaurant please", Toast.LENGTH_SHORT).show();
             return;
         }
 

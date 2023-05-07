@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +32,8 @@ public class MealConstruction extends AppCompatActivity {
     private double maxCarbs;
 
     private boolean filledName;
+
+    private boolean validOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +62,10 @@ public class MealConstruction extends AppCompatActivity {
 
         //receive the max carbs
         maxCarbs = Double.parseDouble(mIntent.getExtras().getString("maxCarbs"));
-        Log.d("maxCarbs", "maxCarbs = "+maxCarbs);
+        Log.d("maxCarbs", "maxCarbs = " + maxCarbs);
 
         filledName = false;
+        validOrder = false;
     }
 
     //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
@@ -79,7 +83,7 @@ public class MealConstruction extends AppCompatActivity {
     public void performRestaurantChoice(View v) {
         Intent intent = new Intent(this, RestaurantChoice.class);
 
-        Log.d("maxCarbs", "maxCarbs before passed = "+maxCarbs);
+        Log.d("maxCarbs", "maxCarbs before passed = " + maxCarbs);
 
         //pass on max carbs
         intent.putExtra("maxCarbs", maxCarbs);
@@ -90,7 +94,7 @@ public class MealConstruction extends AppCompatActivity {
     public void performWelcome(View v) {
         Intent intent = new Intent(this, Welcome.class);
 
-        intent.putExtra("want to return to restaurant choice", true );
+        intent.putExtra("want to return to restaurant choice", true);
 
         startActivity(intent);
     }
@@ -103,6 +107,12 @@ public class MealConstruction extends AppCompatActivity {
 
     //if user finishes adding custom order, save info (wip) and go to meal breakdown page
     public void performMealBreakdown(View v) throws IOException {
+
+        if (!validOrder) {
+            Toast.makeText(getApplicationContext(), "Pick valid order please (first letter of each word should be capitalized)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(this, MealBreakdown.class);
         intent.putExtra("restaurantString", restaurant);
 
@@ -138,7 +148,7 @@ public class MealConstruction extends AppCompatActivity {
         }
 
         EditText inputGramsOfCarbs = findViewById(R.id.inputGramsOfCarbs);
-        double carbs ;
+        double carbs;
 
         //catch empty input
         if (!inputGramsOfCarbs.getText().toString().isEmpty()) {
@@ -186,7 +196,7 @@ public class MealConstruction extends AppCompatActivity {
         //passes "text" to the search method below
         search(text);
         Log.d("MealConstruction", "Text #1 is: " + text);
-        filledName=false;
+        filledName = false;
         //continually updates the value of "text" as the user edits the input text
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -206,6 +216,7 @@ public class MealConstruction extends AppCompatActivity {
                 //passes "text" to the search method below
                 search(text);
                 Log.d("MealConstruction", "Text #2 is: " + text);
+                validOrder = false;
             }
         });
     }
@@ -232,11 +243,12 @@ public class MealConstruction extends AppCompatActivity {
                                 "value is: " + childSnapshot.getValue());
 
                         if (size == 1) {
+                            validOrder = true;
                             String text = "";
                             Order o = childSnapshot.getValue(Order.class);
 //                            order = o;
                             if (o.getRestaurant().equals(restaurant)) {
-                                Log.d("OrderExists", "order o = "+o.toString());
+                                Log.d("OrderExists", "order o = " + o.toString());
                                 //Display serving size (number)
                                 EditText editText = findViewById(R.id.inputServingSize);
                                 text = Double.toString(o.getServingSize());
@@ -255,7 +267,7 @@ public class MealConstruction extends AppCompatActivity {
                                 //Display 1 for serving size by default
                                 EditText editText3 = findViewById(R.id.inputServingPercentage);
                                 editText3.setText("100");
-                                if(!filledName){
+                                if (!filledName) {
                                     //Autofill food name
                                     EditText editText5 = findViewById(R.id.inputFoodName);
                                     editText5.setText(o.getOrderName());
