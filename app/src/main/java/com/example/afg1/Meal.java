@@ -82,18 +82,35 @@ public class Meal implements Serializable {
         this.servings = servings;
     }
 
+    /**
+     * adds order to meal
+     * @param f
+     */
+
     public void addOrder(Order f) {
         meal.add(f);
     }
 
+    /**
+     * returns the restaurant name as a string
+     * @return
+     */
     public String getRestaurant() {
         return restaurant;
     }
 
+    /**
+     * sets the restaurant to string r
+     * @param r
+     */
     public void setRestaurant(String r) {
         restaurant = r;
     }
 
+    /**
+     * returns the orders as a string
+     * @return
+     */
     public String getOrderNames(){
         String temp = "";
         for (Order o: meal){

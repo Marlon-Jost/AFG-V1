@@ -1,3 +1,6 @@
+/**
+ * this class allows users to search for an order and/or to input their own data
+ */
 package com.example.afg1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +38,10 @@ public class MealConstruction extends AppCompatActivity {
 
     private boolean validOrder;
 
+    /**
+     * creates meal construction page, accepts restaurant, meal, and max carbs
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,18 +75,10 @@ public class MealConstruction extends AppCompatActivity {
         validOrder = false;
     }
 
-    //if user presses home button, go back to home page (need another button to save meal if it doesn't save automatically)
-    public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
-        startActivity(intent);
-    }
-
-    //if user presses back button, go back to restaurant vs home page
-    public void performRestaurantVsHomePage(View v) {
-        Intent intent = new Intent(this, RestaurantVsHome.class);
-        startActivity(intent);
-    }
-
+    /**
+     * creates restaurant choice page and passes on max carbs
+     * @param v
+     */
     public void performRestaurantChoice(View v) {
         Intent intent = new Intent(this, RestaurantChoice.class);
 
@@ -91,6 +90,10 @@ public class MealConstruction extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * creates welcome page
+     * @param v
+     */
     public void performWelcome(View v) {
         Intent intent = new Intent(this, Welcome.class);
 
@@ -99,13 +102,12 @@ public class MealConstruction extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    //if user wants to add a food, go to food search page
-//    public void performFoodSearch(View v) {
-//        Intent intent = new Intent(this, FoodSearch.class);
-//        startActivity(intent);
-//    }
 
-    //if user finishes adding custom order, save info (wip) and go to meal breakdown page
+    /**
+     * reads the text fields and passes on the data to meal breakdown class
+     * @param v
+     * @throws IOException
+     */
     public void performMealBreakdown(View v) throws IOException {
 
         if (!validOrder) {
@@ -188,7 +190,11 @@ public class MealConstruction extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    /**
+     * Observes user input into the text box and calls the search method on changes
+     *
+     * @param v
+     */
     public void performSearch(View v) {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.inputFoodName);
@@ -221,8 +227,11 @@ public class MealConstruction extends AppCompatActivity {
         });
     }
 
-    //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
-    private void search(String foodName) {
+    /**
+     * searches through our database by sorting the children within a snapshot of our class
+     * according the the specified query and looping through the remaining children
+     */
+     private void search(String foodName) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
