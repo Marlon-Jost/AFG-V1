@@ -1,3 +1,7 @@
+/**
+ * allows users to search for a restaurant
+ */
+
 package com.example.afg1;
 
 import androidx.annotation.NonNull;
@@ -37,6 +41,11 @@ public class RestaurantChoice extends AppCompatActivity {
 
     private boolean validRestaurant;
 
+    /**
+     * creates restaurant choice page and accepts max carbs from welcome page
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,24 +53,23 @@ public class RestaurantChoice extends AppCompatActivity {
 
         //receive the max carbs
         Intent mIntent = getIntent();
-        this.maxCarbs  =  mIntent.getExtras().getDouble("maxCarbs");
-        Log.d("maxCarbs", "maxCarbs after passed = "+maxCarbs);
+        this.maxCarbs = mIntent.getExtras().getDouble("maxCarbs");
+        Log.d("maxCarbs", "maxCarbs after passed = " + maxCarbs);
     }
 
     public void setDatabase(FirebaseDatabase database) {
         data = database;
     }
 
-     //if user presses back button, going back to restaurant vs home meal page
-    public void performRestaurantVsHome(View v) {
-        Intent intent = new Intent(this, RestaurantVsHome.class);
-        startActivity(intent);
-    }
-
-    //if user finishes choosing a restaurant, going to meal creation page
+    /**
+     * Creates a meal constuction page, passes on: meal, restaurant, and max carbs
+     *
+     * @param v
+     * @throws IOException
+     */
     public void performMealConstruction(View v) throws IOException {
 
-        if (!validRestaurant){
+        if (!validRestaurant) {
             Toast.makeText(getApplicationContext(), "Pick valid restaurant please", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -86,17 +94,21 @@ public class RestaurantChoice extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //if user presses home button, go to home
-    public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
-        startActivity(intent);
-    }
-
+    /**
+     * creates welcome page
+     *
+     * @param v
+     */
     public void performWelcome(View v) {
         Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
     }
 
+    /**
+     * Observes user input into the text box and calls the search method on changes
+     *
+     * @param v
+     */
     public void performSearch(View v) {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.searchBarRestaurant);
@@ -130,7 +142,10 @@ public class RestaurantChoice extends AppCompatActivity {
         });
     }
 
-    //should search through our database by sorting the children within a snapshot of our class according the the specified query and looping through the remaining children
+    /**
+     * searches through our database by sorting the children within a snapshot of our class
+     * according the the specified query and looping through the remaining children
+     */
     private void search(String name) {
         //correct the casing of the user input:
 //        for (int i = 0; i<name.length(); i++){
@@ -152,7 +167,7 @@ public class RestaurantChoice extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 int size = (int) snapshot.getChildrenCount();
-                if (size > 0 && name!="" &&name !=" "&&name!=null) {
+                if (size > 0 && name != "" && name != " " && name != null) {
                     validRestaurant = true;
                 }
                 Log.d("RestaurantChoice", "Size post filtered: " + Integer.toString(size));

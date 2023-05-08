@@ -92,19 +92,6 @@ public class Order implements Serializable {
 		this.servingSize = servingSize;
 	}
 
-//	/**
-//	 * @return the servingNum
-//	 */
-//	public double getServingNum() {
-//		return servingNum;
-//	}
-//
-//	/**
-//	 * @param servingNum the servingNum to set
-//	 */
-//	public void setServingNum(double servingNum) {
-//		this.servingNum = servingNum;
-//	}
 
 	/**
 	 * @return the servingUnits
@@ -126,6 +113,11 @@ public class Order implements Serializable {
 	public String getRestaurant(){
 		return restaurant;
 	}
+
+	/**
+	 * prints order object as a string
+	 * @return
+	 */
 	@Override
 	public String toString(){
 		return "Order "+orderName+" has "+totalCarbs+" grams of carbs and is from "+restaurant;

@@ -1,3 +1,7 @@
+/**
+ * this class allows users to see their meal breakdown and add to it
+ */
+
 package com.example.afg1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +24,11 @@ public class MealBreakdown extends AppCompatActivity {
     private String restaurant;
     private Double maxCarbs;
 
+    /**
+     * creates the meal breakdown page
+     * accepts: meal, max carbs, and restaurant
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,11 +79,11 @@ public class MealBreakdown extends AppCompatActivity {
 
     }
 
-    public void performHomePage(View v) {
-        Intent intent = new Intent(this, HomePage.class);
-        startActivity(intent);
-    }
-
+    /**
+     * returns to meal construction and passes on max carbs, restaurant, and the meal
+     * @param v
+     * @throws IOException
+     */
     public void performMealConstruction(View v) throws IOException {
         Intent intent = new Intent(this, MealConstruction.class);
 
@@ -95,6 +104,10 @@ public class MealBreakdown extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * returns to welcome page
+     * @param v
+     */
     public void performWelcome(View v) {
         Intent intent = new Intent(this, Welcome.class);
         startActivity(intent);
