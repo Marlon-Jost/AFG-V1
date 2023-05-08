@@ -62,7 +62,7 @@ public class RestaurantChoice extends AppCompatActivity {
     }
 
     /**
-     * Creates a meal constuction page, passes on: meal, restaurant, and max carbs
+     * Creates a meal construction page, passes on: meal, restaurant, and max carbs
      *
      * @param v
      * @throws IOException

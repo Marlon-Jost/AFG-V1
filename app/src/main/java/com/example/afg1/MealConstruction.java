@@ -170,8 +170,8 @@ public class MealConstruction extends AppCompatActivity {
         }
 
         //calculate carbs and serving size based on serving percentage
-        carbs = (servingPercentage / 100.0) * carbs;
-        servingSize = (servingPercentage / 100.0) * servingSize;
+        carbs = (double)((double)servingPercentage / 100.0) * (double)carbs;
+        servingSize = (double)((double)servingPercentage / 100.0) * (double) servingSize;
 
         //make order
         order = new Order(restaurant, orderName, carbs, servingSize, servingUnits);
