@@ -53,7 +53,7 @@ public class Meal implements Serializable {
      * @return the totalCarbs
      */
     public double getTotalCarbs() {
-        int temp = 0;
+        double temp = 0;
         for (Order o: meal){
             temp+=o.getTotalCarbs();
         }
