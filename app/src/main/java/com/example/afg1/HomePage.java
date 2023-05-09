@@ -91,7 +91,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void readQuestionDataField(){
-        InputStream is = getResources().openRawResource(R.raw.self_made_excel_database_1);
+        InputStream is = getResources().openRawResource(R.raw.database);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line = "";
