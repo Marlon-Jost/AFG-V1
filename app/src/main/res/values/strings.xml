@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AFG 1</string>
+    <string name="app_name">CarbSmart</string>
     <string name="welcomeText">Welcome!</string>
     <string name="appDescription">This is an app aimed for those with Type 1 Diabetes.</string>
     <string name="enterMaxInstrStr">Enter your max carb count for a meal below:</string>
