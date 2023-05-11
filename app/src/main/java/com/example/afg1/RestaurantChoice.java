@@ -147,15 +147,6 @@ public class RestaurantChoice extends AppCompatActivity {
      * according the the specified query and looping through the remaining children
      */
     private void search(String name) {
-        //correct the casing of the user input:
-//        for (int i = 0; i<name.length(); i++){
-//            if (i==0){
-//                name = name.substring(0,0).toUpperCase()+name.substring(1);
-//            }
-//            else if (name.charAt(i)==' '){
-//                name=name.substring(0,i+1)+name.substring(i+1, i+1).toUpperCase()+name.substring(i+2);
-//            }
-//        }
         restaurant = name;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
@@ -170,7 +161,7 @@ public class RestaurantChoice extends AppCompatActivity {
                 if (size > 0 && name != "" && name != " " && name != null) {
                     validRestaurant = true;
                 }
-                Log.d("RestaurantChoice", "Size post filtered: " + Integer.toString(size));
+                Log.d("RestaurantChoice", "Size post filtered: " + (size));
                 if (snapshot.exists()) {
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                         Log.d("RestaurantChoice", "Key is: " + childSnapshot.getKey() + " value is: " + childSnapshot.getValue());

@@ -38,7 +38,13 @@ public class Welcome extends AppCompatActivity {
         EditText editText = findViewById(R.id.inputMaxCarbs);
         String maxCarbs;
         if (!editText.getText().toString().isEmpty()) {
-            maxCarbs = editText.getText().toString();
+            if (Double.parseDouble(editText.getText().toString())>0){
+                maxCarbs = editText.getText().toString();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Max carbs must be greater than zero", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         else {
             Toast.makeText(getApplicationContext(), "Enter max carbs please", Toast.LENGTH_SHORT).show();
