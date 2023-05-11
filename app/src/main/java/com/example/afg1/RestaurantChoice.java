@@ -113,9 +113,27 @@ public class RestaurantChoice extends AppCompatActivity {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.searchBarRestaurant);
         String text = editText.getText().toString();
+
+        //standardize text string capitalisation
+        for (int i =0; i<text.length(); i++){
+            if ( i==0){
+                text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+            } else if (text.charAt(i-1) == ' ') {
+                text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+            }
+            if (text.equals("kfc")){
+                text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+            }
+        }
+
+        //kfc to caps
+        if (text.equals("kfc")){
+            text = text.toUpperCase();
+        }
+
         //passes "text" to the search method below
         search(text);
-        Log.d("RestaurantChoice", "Text #1 is: " + text);
+        Log.d("caps testing", "Text #1 is: " + text);
         validRestaurant = false;
 
         //continually updates the value of "text" as the user edits the input text
@@ -135,8 +153,22 @@ public class RestaurantChoice extends AppCompatActivity {
                 // Call your method here with the text entered by the user
                 String text = s.toString();
                 //passes "text" to the search method below
+
+                //standardize text string capitalisation
+                for (int i =0; i<text.length(); i++){
+                    if ( i==0){
+                        text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                    } else if (text.charAt(i-1) == ' ') {
+                    text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                    }
+                    if (text.equals("kfc")){
+                        text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                    }
+                }
+
+
                 search(text);
-                Log.d("RestaurantChoice", "Text #2 is: " + text);
+                Log.d("caps testing", "Text #2 is: " + text);
                 validRestaurant = false;
             }
         });
@@ -147,7 +179,9 @@ public class RestaurantChoice extends AppCompatActivity {
      * according the the specified query and looping through the remaining children
      */
     private void search(String name) {
+
         restaurant = name;
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Orders");
 

@@ -199,6 +199,16 @@ public class MealConstruction extends AppCompatActivity {
         //fetches the text entered in the text view the first time
         EditText editText = (EditText) findViewById(R.id.inputFoodName);
         String text = editText.getText().toString();
+
+        //standardize text string capitalisation
+        for (int i =0; i<text.length(); i++){
+            if ( i==0){
+                text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+            } else if (text.charAt(i-1) == ' ') {
+                text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+            }
+        }
+
         //passes "text" to the search method below
         search(text);
         Log.d("MealConstruction", "Text #1 is: " + text);
@@ -219,6 +229,16 @@ public class MealConstruction extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 // Call your method here with the text entered by the user
                 String text = s.toString();
+
+                //standardize text string capitalisation
+                for (int i =0; i<text.length(); i++){
+                    if ( i==0){
+                        text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                    } else if (text.charAt(i-1) == ' ') {
+                        text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                    }
+                }
+
                 //passes "text" to the search method below
                 search(text);
                 Log.d("MealConstruction", "Text #2 is: " + text);
