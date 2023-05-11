@@ -10,10 +10,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Welcome extends AppCompatActivity {
+
+
     /**
      * creates the Welcome page
+     *
      * @param savedInstanceState
      */
     @Override
@@ -25,6 +29,7 @@ public class Welcome extends AppCompatActivity {
 
     /**
      * opens the restaurant choice page and passes on the max carbs
+     *
      * @param v
      */
     public void performRestaurantChoice(View v) {
@@ -32,11 +37,12 @@ public class Welcome extends AppCompatActivity {
 
         EditText editText = findViewById(R.id.inputMaxCarbs);
         String maxCarbs;
-        if (!editText.getText().toString().isEmpty()){
+        if (!editText.getText().toString().isEmpty()) {
             maxCarbs = editText.getText().toString();
         }
-        else{
-            maxCarbs="0";
+        else {
+            Toast.makeText(getApplicationContext(), "Enter max carbs please", Toast.LENGTH_SHORT).show();
+            return;
         }
         Double maxCarbsDouble = Double.parseDouble(maxCarbs);
         //pass on max carbs
