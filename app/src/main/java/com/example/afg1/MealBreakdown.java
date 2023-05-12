@@ -17,12 +17,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DecimalFormat;
 
 public class MealBreakdown extends AppCompatActivity {
 
     private Meal m;
     private String restaurant;
     private Double maxCarbs;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
      * creates the meal breakdown page
@@ -61,11 +63,11 @@ public class MealBreakdown extends AppCompatActivity {
         displayOrders.setText(text);
 
         TextView displayCarbs = findViewById(R.id.textNumCarbs);
-        String totCarbs = Double.toString(m.getTotalCarbs());
+        String totCarbs = df.format(m.getTotalCarbs());
         displayCarbs.setText(totCarbs);
 
         //receive the max carbs
-        maxCarbs = Double.parseDouble( mIntent.getExtras().getString("maxCarbs"));
+        maxCarbs = Double.parseDouble( (mIntent.getExtras().getString("maxCarbs")));
 
         if(maxCarbs<m.getTotalCarbs()){
            displayCarbs.setTextColor(Color.RED);
