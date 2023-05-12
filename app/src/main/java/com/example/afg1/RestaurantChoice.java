@@ -114,22 +114,23 @@ public class RestaurantChoice extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.searchBarRestaurant);
         String text = editText.getText().toString();
 
-        //standardize text string capitalisation
-        for (int i =0; i<text.length(); i++){
-            if ( i==0){
-                text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
-            } else if (text.charAt(i-1) == ' ') {
-                text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
-            }
-            if (text.equals("kfc")){
-                text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
-            }
-        }
 
         //kfc to caps
         if (text.equals("kfc")){
-            text = text.toUpperCase();
+            text = "KFC";
         }
+        else {
+            //standardize text string capitalisation
+            for (int i = 0; i < text.length(); i++) {
+                if (i == 0) {
+                    text = Character.toUpperCase(text.charAt(i)) + text.substring(i + 1);
+                } else if (text.charAt(i - 1) == ' ') {
+                    text = text.substring(0, i) + Character.toUpperCase(text.charAt(i)) + text.substring(i + 1);
+                }
+            }
+        }
+
+
 
         //passes "text" to the search method below
         search(text);
@@ -154,18 +155,20 @@ public class RestaurantChoice extends AppCompatActivity {
                 String text = s.toString();
                 //passes "text" to the search method below
 
-                //standardize text string capitalisation
-                for (int i =0; i<text.length(); i++){
-                    if ( i==0){
-                        text = Character.toUpperCase(text.charAt(i))+text.substring(i+1);
-                    } else if (text.charAt(i-1) == ' ') {
-                    text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
-                    }
-                    if (text.equals("kfc")){
-                        text= text.substring(0, i)+Character.toUpperCase(text.charAt(i))+text.substring(i+1);
+                //kfc to caps
+                if (text.equals("kfc")){
+                    text = "KFC";
+                }
+                else {
+                    //standardize text string capitalisation
+                    for (int i = 0; i < text.length(); i++) {
+                        if (i == 0) {
+                            text = Character.toUpperCase(text.charAt(i)) + text.substring(i + 1);
+                        } else if (text.charAt(i - 1) == ' ') {
+                            text = text.substring(0, i) + Character.toUpperCase(text.charAt(i)) + text.substring(i + 1);
+                        }
                     }
                 }
-
 
                 search(text);
                 Log.d("caps testing", "Text #2 is: " + text);
