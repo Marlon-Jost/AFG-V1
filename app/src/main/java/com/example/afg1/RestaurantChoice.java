@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+//Searching info from https://firebase.google.com/docs/guides
+//more credits: https://developer.android.com/docs
 public class RestaurantChoice extends AppCompatActivity {
 
     private FirebaseDatabase data;

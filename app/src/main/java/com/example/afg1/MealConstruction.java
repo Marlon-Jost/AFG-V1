@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+//Searching info from https://firebase.google.com/docs/guides
+//more credits: https://developer.android.com/docs
 public class MealConstruction extends AppCompatActivity {
 
     private String restaurant;
